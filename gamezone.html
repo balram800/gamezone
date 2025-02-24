@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetZone - Ultimate Gambling Hub</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a1a, #2b2b2b); /* Dark gambling vibe */
+            color: #fff;
+            background-attachment: fixed;
+        }
+        header {
+            background: #0d0d0d;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ffcc00;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            color: #ffcc00;
+            text-transform: uppercase;
+        }
+        header p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #ccc;
+        }
+        nav {
+            background: #1f1f1f;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        .main-content {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.7);
+        }
+        .games-list h3, .wallet-section h3 {
+            color: #ffcc00;
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .games-list .game-item {
+            background: #252525;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        .games-list .game-item:hover {
+            transform: scale(1.02);
+            background: #303030;
+        }
+        .games-list .game-item h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+        }
+        .games-list .game-item p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #aaa;
+        }
+        .games-list .game-item button, .wallet-section button {
+            padding: 8px 20px;
+            background: #ff4444; /* Red for gambling vibe */
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .games-list .game-item button:hover, .wallet-section button:hover {
+            background: #cc3333;
+        }
+        .wallet-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #252525;
+            border-radius: 5px;
+        }
+        .wallet-section select, .wallet-section input {
+            padding: 8px;
+            margin: 5px 10px 5px 0;
+            width: 150px;
+            border-radius: 3px;
+            background: #333;
+            color: #fff;
+            border: 1px solid #444;
+        }
+        #balance {
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        #message {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #0d0d0d;
+            color: #ccc;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 2px solid #ffcc00;
+        }
+        #gameArea {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 400px;
+            background: #1a1a1a;
+            border: 2px solid #ffcc00;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            z-index: 1000;
+            color: #fff;
+        }
+        #gameTitle {
+            color: #ffcc00;
+        }
+        #target {
+            width: 50px;
+            height: 50px;
+            background-color: #ff4444;
+            border-radius: 50%;
+            position: absolute;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BetZone</h1>
+        <p>Place Your Bets, Win Big!</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#games">Games</a>
+        <a href="#promotions">Promotions</a>
+        <a href="#support">Support</a>
+    </nav>
+
+    <div class="main-content">
+        <div class="games-list">
+            <h3>Top Betting Games</h3>
+            <div class="game-item">
+                <div>
+                    <h4>Avatar Slots</h4>
+                    <p>Spin the reels in Pandora’s jungle for massive payouts!</p>
+                </div>
+                <button onclick="startAvatarGame()">Play Now</button>
+            </div>
+            <div class="game-item">
+                <div>
+                    <h4>Cyberpunk Poker</h4>
+                    <p>Bet big in Night City’s underground poker tables.</p>
+                </div>
+                <button onclick="playGame('Cyberpunk Poker')">Play Now</button>
+            </div>
+            <div class="game-item">
+                <div>
+                    <h4>Minecraft Mines</h4>
+                    <p>Dig for treasures and multiply your stake!</p>
+                </div>
+                <button onclick="playGame('Minecraft Mines')">Play Now</button>
+            </div>
+            <div class="game-item">
+                <div>
+                    <h4>Warzone Roulette</h4>
+                    <p>Spin the wheel in this high-stakes battle royale twist.</p>
+                </div>
+                <button onclick="playGame('Warzone Roulette')">Play Now</button>
+            </div>
+        </div>
+
+        <div class="wallet-section">
+            <h3>Your Betting Wallet</h3>
+            <p>Balance: $<span id="balance">100</span></p>
+            <select id="depositMethod">
+                <option value="upi">UPI</option>
+                <option value="eth">Ethereum (ETH)</option>
+                <option value="btc">Bitcoin (BTC)</option>
+                <option value="bank">Bank Account</option>
+            </select>
+            <input type="number" id="amount" placeholder="Enter amount" min="1">
+            <button onclick="deposit()">Deposit</button>
+            <button onclick="withdraw()">Withdraw</button>
+            <p id="message" style="color: #ff4444;"></p>
+        </div>
+    </div>
+
+    <!-- Game Area Popup -->
+    <div id="gameArea">
+        <h2 id="gameTitle">Game</h2>
+        <p>Score: <span id="score">0</span></p>
+        <div id="target" onclick="hitTarget()"></div>
+        <button onclick="closeGame()">Close</button>
+    </div>
+
+    <footer>
+        <p>© 2025 BetZone. Gamble Responsibly.</p>
+    </footer>
+
+    <script>
+        let balance = 100; // Starting balance
+        let score = 0;
+        let gameActive = false;
+
+        function updateBalance() {
+            document.getElementById("balance").textContent = balance;
+            document.getElementById("message").textContent = "";
+        }
+
+        function deposit() {
+            let amount = parseInt(document.getElementById("amount").value);
+            let method = document.getElementById("depositMethod").value;
+
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById("message").textContent = "Please enter a valid amount!";
+            } else {
+                balance += amount;
+                updateBalance();
+                let methodName = {
+                    "upi": "UPI",
+                    "eth": "Ethereum (ETH)",
+                    "btc": "Bitcoin (BTC)",
+                    "bank": "Bank Account"
+                }[method];
+                document.getElementById("message").textContent = `Deposited $${amount} via ${methodName}!`;
+                document.getElementById("message").style.color = "#00cc00";
+                document.getElementById("amount").value = "";
+            }
+        }
+
+        function withdraw() {
+            let amount = parseInt(document.getElementById("amount").value);
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById("message").textContent = "Please enter a valid amount!";
+            } else if (amount > balance) {
+                document.getElementById("message").textContent = "Insufficient funds!";
+            } else {
+                balance -= amount;
+                updateBalance();
+                document.getElementById("message").textContent = `Withdrew $${amount}!`;
+                document.getElementById("message").style.color = "#00cc00";
+                document.getElementById("amount").value = "";
+            }
+        }
+
+        // Avatar Slots Game (Simple Click Game)
+        function startAvatarGame() {
+            const gameArea = document.getElementById("gameArea");
+            const gameTitle = document.getElementById("gameTitle");
+            gameTitle.textContent = "Avatar Slots";
+            gameArea.style.display = "block";
+            score = 0;
+            document.getElementById("score").textContent = score;
+            gameActive = true;
+            moveTarget();
+        }
+
+        function moveTarget() {
+            if (!gameActive) return;
+            const target = document.getElementById("target");
+            const gameArea = document.getElementById("gameArea");
+            const maxX = gameArea.offsetWidth - target.offsetWidth;
+            const maxY = gameArea.offsetHeight - target.offsetHeight - 50;
+            const newX = Math.floor(Math.random() * maxX);
+            const newY = Math.floor(Math.random() * maxY);
+            target.style.left = newX + "px";
+            target.style.top = newY + "px";
+            setTimeout(moveTarget, 1000);
+        }
+
+        function hitTarget() {
+            if (!gameActive) return;
+            score += 10; // Simulating a "win"
+            document.getElementById("score").textContent = score;
+        }
+
+        function closeGame() {
+            gameActive = false;
+            document.getElementById("gameArea").style.display = "none";
+        }
+
+        // Placeholder for other games
+        function playGame(gameName) {
+            const gameArea = document.getElementById("gameArea");
+            gameArea.style.display = "block";
+            gameArea.innerHTML = `<h2>${gameName}</h2><p>Place your bet and play ${gameName}! (Coming Soon)</p><button onclick="closeGame()">Close</button>`;
+        }
+    </script>
+</body>
+</html>
